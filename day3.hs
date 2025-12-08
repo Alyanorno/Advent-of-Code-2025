@@ -1,16 +1,10 @@
-import Data.List.Split
-import Data.List
+import Math.Combinat.Sets
 
 
-main :: IO()
-main = do
-	c <- readFile "day3_input"
-	print . day3 $ c
-	print . day3_2 $ c
+day3 = sum . map (maximum . map read . choose 2) . lines
+
+day3_2 = sum . map (maximum . map read . choose 12) . lines
 
 
-day3 = sum . map (take 1 . reverse . sort . read . \x -> [a ++ b | a <- x, b <- x] ) . words
-
-
-day3_2 x = ""
+main = readFile "day3_input" >>= mapM_ print . sequence [day3, day3_2]
 
