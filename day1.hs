@@ -11,4 +11,4 @@ parse ('L':xs) = 0 - read xs
 parse ('R':xs) = read xs
 
 
-main = readFile "day1_input" >>= mapM_ print . sequence [day1, day1_2]
+main = mapM_ print . sequence [day1, day1_2] =<< readFile "day1_input"

@@ -11,5 +11,4 @@ day2_2 = sum . concatMap (filter (repeats . show) . (\[a,b] -> [a..b]) . map rea
 	repeats s = let l = length s in any ((\(x:xs) -> all (== x) xs) . flip chunksOf s) [k | k <- [1..l], l `mod` k == 0, l `div` k >= 2]
 
 
-main = readFile "day2_input" >>= mapM_ print . sequence [day2, day2_2]
-
+main = mapM_ print . sequence [day2, day2_2] =<< readFile "day2_input"
