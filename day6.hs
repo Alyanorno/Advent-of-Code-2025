@@ -9,15 +9,14 @@ day6 = sum . map (calc . reverse) . transpose . map words . lines
 
 day6_2 =  sum . map calc . split . concatMap reverse . transpose . lines
 	where
-	calc ('+':ls) = sum $ readMany ls
-	calc ('*':ls) = product $ readMany ls
+	calc ('+':ls) = sum $ numbers ls
+	calc ('*':ls) = product $ numbers ls
 
-	readMany = unfoldr $ listToMaybe . concatMap reads . tails . reverse
+	numbers = map read . words . reverse
 
+	split [] = []
 	split (l:ls) = (l:x) : split ls'
 		where (x, ls') = span (not . (flip elem "+*")) ls
-	split [] = []
 
 
-main = mapM_ print . sequence [day6, day6_2] =<< readFile "day6_input"
-
+main = mapM_ print . sequence [day6_2] =<< readFile "day6_input"
