@@ -11,10 +11,10 @@ day5_2 input = sum $ map (\(a,b) -> b-a+1) $ merge $ sort $ map parse ranges
 	where
 	(ranges, _) = break null (lines input)
 
-	merge [x] = [x]
 	merge (a:b:ls)
 		| snd b >= fst b-1 = merge ((fst a, max (snd a) (snd b)):ls)
 		| otherwise = a : merge (b:ls)
+	merge x = x
 
 parse = bimap read (read . tail) . break (=='-')
 
