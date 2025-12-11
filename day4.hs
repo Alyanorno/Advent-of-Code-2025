@@ -14,3 +14,4 @@ removable grid = [(x,y) | x <- [0..length (head grid)-1], y <- [0..length (head 
 
 
 main = mapM_ print . sequence [day4, day4_2] =<< readFile "day4_input"
+
