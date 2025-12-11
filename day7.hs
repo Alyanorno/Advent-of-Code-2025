@@ -3,7 +3,7 @@ import Data.Maybe
 import Data.Ix (inRange)
 
 
-day7 = fst . (\(l:ls) -> foldl step (0, [fromJust $ elemIndex 'S' l]) $ ls) . lines
+day7 = fst . (\(l:ls) -> foldl step (0, [fromJust $ elemIndex 'S' l]) ls) . lines
 	where
 	step (total, beams) row = (total + length splits, new)
 		where
@@ -13,7 +13,7 @@ day7 = fst . (\(l:ls) -> foldl step (0, [fromJust $ elemIndex 'S' l]) $ ls) . li
 
 day7_2 input = sum $ foldl' step (start columns) [1..length grid-1]
 	where
-	grid = lines $ input
+	grid = lines input
 	columnsLenght = length (head grid)-1
 	columns = [0..columnsLenght]
 	start = map (fromEnum . (==) (fromJust $ elemIndex 'S' $ head grid))
