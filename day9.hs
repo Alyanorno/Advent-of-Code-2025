@@ -1,7 +1,8 @@
 import Data.List.Split
 import Data.List
 import Data.Ord
-import qualified Data.Set as Set
+import qualified Data.HashSet as Set
+import Data.Hashable
 
 
 day9 = head . sortBy (comparing Down) . (\a -> [(abs (x1-y1)+1) * (abs (x2-y2)+1) | (x1:x2:[]) <- a, (y1:y2:[]) <- a]) . map (map read . splitOn ",") . lines
